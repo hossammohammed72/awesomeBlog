@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTablesRealtionships extends Migration
+class CreateTablesRelationships extends Migration
 {
     /**
      * Run the migrations.
@@ -18,14 +18,14 @@ class CreateTablesRealtionships extends Migration
             $table->index('post_id');
         });
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->index('user_id');
         });
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('categories_posts', function (Blueprint $table) {
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');;
             $table->index('post_id');
-            $table->foreign('categories_id')->references('id')->on('categoriess')->onDelete('cascade')->onUpdate('cascade');;
-            $table->index('categories_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');;
+            $table->index('category_id');
         });
     }
 
@@ -36,6 +36,5 @@ class CreateTablesRealtionships extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tables_realtionships');
     }
 }
