@@ -71,7 +71,7 @@ class PostController extends Controller
     private function savePostImages(Post $post,$images){
         foreach ($images as $imageInput){
             $filename = $imageInput->getClientOriginalName();
-            $path = $imageInput->store('public/imgs');
+            $path = $imageInput->store('posts');
             Image::insert([
                 'post_id'=>$post->id,
                 'url'=>$path
