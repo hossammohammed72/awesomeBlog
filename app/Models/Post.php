@@ -18,4 +18,7 @@ class Post extends Model
         
         return route('front.feed.post.show',['post'=>$this->id]);
     }
+    public function formattedDate(){
+        return date('D j F g m a',strtotime((string)$this->created_at)); 
+    }
 }
