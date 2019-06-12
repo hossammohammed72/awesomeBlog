@@ -112,7 +112,7 @@ $.ajax({
         <div class='input-group'\>
         <div class='custom-file'\>
                     <input type='file' name='photos[]' class='custom-file-input' \>
-                  <label class="custom-file-label" for="photos[]">upload the attractions images</label>
+                  <label class="custom-file-label" for="photos[]">upload the post images</label>
 
                   </div\>
                   </div\>

@@ -20,12 +20,10 @@
         <tbody>
         @foreach($categories as $category)
         <tr>
-            <td class="text-center"> {{$category->name}} </td>
+        <td class="text-center"> <a href='{{$category->url}}'>{{$category->name}}</a> </td>
             <td class="text-center"> {{$category->description}} </td>
             <td class="text-center">{{$category->posts->count()}}</td>
             <td class="text-center">
-                <a title="Edit" class="btn btn-info" href="{{route('admins.categories.edit',$category->id)}}">
-                <i class="fa fa-edit"></i></a>
                 <button title="Delete" class="deleteBtn btn btn-danger"  data-id="{{$category->id}}">
                 <i class="fa fa-trash"></i></button>
             </td>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 // models 
 use App\Models\Category;
+
 class CategoryController extends Controller
 {
     /**
@@ -21,14 +22,16 @@ class CategoryController extends Controller
             'categories' => $this->allCategories(),
         ]);
     }
-    public function categoriesinJson(){
-        return response()->json(['categories'=>$this->allCategories()],200);
+    public function categoriesinJson()
+    {
+        return response()->json(['categories' => $this->allCategories()], 200);
     }
 
-    public function allCategories(){
-        $categories= Category::withCount('posts')->orderBy('posts_count','desc')->get();
-        foreach($categories as $category)
-        $category->url = $category->url();
+    public function allCategories()
+    {
+        $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->get();
+        foreach ($categories as $category)
+            $category->url = $category->url();
         return $categories;
     }
 
@@ -41,7 +44,6 @@ class CategoryController extends Controller
     {
         //
         return view('admin.category.create');
-
     }
 
     /**
@@ -53,20 +55,26 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $validator = Validator::make($request->all(),[
-            'name'=>'string|required',
-            'description'=>'string|min:10'
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|required',
+            'description' => 'string|min:10',
+            'photo' => 'required|mimes:jpeg,png,PNG,jpg,JPG,jpge,gif,svg|max:2048'
         ]);
-        if($validator->fails())
-            return response()->json(['error'=>$validator->getMessageBag()->toArray()],400);
-            $category = new Category();
-            $category->name = $request->input('name');
-            $category->description = $request->input('description');
-            $category->save();
-            return response()->json($category,200);
+        if ($validator->fails())
+            return response()->json(['error' => $validator->getMessageBag()->toArray()], 400);
         
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->image=$this->saveCategoryImage($request->file('photo'));
+        $category->save();
+        return response()->json($category, 200);
     }
-
+    private function saveCategoryImage($image){
+            $filename = $image->getClientOriginalName();
+            $path = $image->store('posts');
+            return $path;
+    }
     /**
      * Display the specified resource.
      *
@@ -78,8 +86,8 @@ class CategoryController extends Controller
         //
         $category->posts();
         return view('front.category')->with([
-            'category'=>$category
-            ]);
+            'category' => $category
+        ]);
     }
 
     /**
@@ -114,8 +122,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-       $isDeleted = Category::find($id)->delete();
-       if(!$isDeleted)
-            return response()->json(['error'=>'1'],500);
+        $isDeleted = Category::find($id)->delete();
+        if (!$isDeleted)
+            return response()->json(['error' => '1'], 500);
     }
 }

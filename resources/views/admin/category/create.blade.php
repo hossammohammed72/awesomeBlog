@@ -5,7 +5,7 @@
     <div class="card-header">
         <h2 class="card-title text-center">Add Category</h2>
     </div>
-    <form id="createCategory" >
+    <form id="createCategory" enctype="multipart/form-data" >
 	@csrf
     <div class="card-body">
         <div class="row">
@@ -21,12 +21,23 @@
 	            	<textarea type="text" class="form-control"  placeholder="Description" name="description">
                     </textarea>
 		        </div>
-		    </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="photosInput">category Images</label>
+                      <div class="input-group" id='photos_input'>
+                        <div class="custom-file">
+                          <input type="file" name='photo' class="custom-file-input" id="photosInput">
+                          <label class="custom-file-label" for="photos">upload the category image</label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
     	</div>
 		
     </div>
     <div class="card-footer ">
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button type="submit" class="btn btn-success">Add Category</button>
             <div class='alert alert-primary col-md-4 pull-right'>
                     Add categories to your blog 
             </div>
@@ -50,12 +61,14 @@ $.ajaxSetup({
 
 $('#createCategory').submit(function(e){
     e.preventDefault();
-    var data = $(this).serialize();
+    var data = new FormData(this);
 	console.log(data);
     $.ajax({
         type: 'POST',
         url: "{{route('admins.categories.store')}}",
         data: data,
+        processData: false,
+        contentType: false,
         success: function(data,status) {
         	console.log("request sent");
             if ((data.errors)) {

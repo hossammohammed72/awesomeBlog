@@ -12,7 +12,7 @@
             <tr>
                 <th class="text-center"> title </th>
                 <th class="text-center"> Description </th>
-                <th class="text-center"> # of posts </th>
+                <th class="text-center"> # of categories </th>
                 
                 <th class="text-center"> Actions </th>
             </tr>
@@ -24,8 +24,6 @@
             <td class="text-center"> {{$post->content}} </td>
             <td class="text-center">{{$post->categories->count()}}</td>
             <td class="text-center">
-                <a title="Edit" class="btn btn-info" href="{{route('admins.posts.edit',$post->id)}}">
-                <i class="fa fa-edit"></i></a>
                 <button title="Delete" class="deleteBtn btn btn-danger"  data-id="{{$post->id}}">
                 <i class="fa fa-trash"></i></button>
             </td>
