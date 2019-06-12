@@ -15,8 +15,9 @@ class CategoriesTableSeeder extends Seeder
         for ($i=1; $i <10 ; $i++) {
 	        $faker = Faker\Factory::create();
 	        $category = new App\Models\Category;
-	        $category->name = $faker->name;
-	        $category->description = $faker->address;
+            $category->name = $faker->country;
+            $category->description = $faker->text;
+            $category->image='categories/blog-'.rand(1,7).'.jpg';
 	        $category->save();
         }
     }
