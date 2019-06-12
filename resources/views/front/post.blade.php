@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url({{$post->images[0]->imageUrl()}});">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{$post->images[0]->imageUrl()}}');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
                 <h1 class="mb-3 bread">{{$post->title}}</h1>
+                <i class='fa fa-clock'></i>{{$post->formattedDate()}}
                 <p class="breadcrumbs"><span class="mr-2"><a href="{{route('front.home')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>{{$post->title}}<i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
@@ -17,6 +18,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 order-lg-last ftco-animate">
             <h2 class="mb-3">{{$post->title}}</h2>
+                <div class='meta'><i class='fa fa-date'></i>{{$post->formattedDate()}}</div>
                 <p>{{$post->content}}<p>
                 @if(isset($post->images[1]))
                 <img src="{{$post->images[1]->imageUrl()}}" alt="" class="img-fluid">
@@ -43,11 +45,5 @@
 @endsection
 @section('scripts')
 <script>
-    for(var key in siteCategories)
-        for(var count=0;count<siteCategories[key].length;count++){
-            alert('hello');
-        $('.categories').append('<li><a href="'+siteCategories[key][count].url+'">'+siteCategories[key][count].name+'<span>('+siteCategories[key][count].posts_count+')</span></a></li>');
-        console.log(siteCategories[key][count].url);
-        }
 </script>
 @append
