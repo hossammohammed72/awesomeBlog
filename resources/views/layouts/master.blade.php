@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Awesome Blog<span>.</span></a>
+            <a class="navbar-brand" href="{{route('front.home')}}">Awesome Blog<span>.</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -122,7 +122,7 @@
             for(var key in categories)
                 for(count=0;count<categories[key].length;count++){
                     $('.dropdown-menu').append(
-                        `<a class="dropdown-item" href="">
+                        `<a class="dropdown-item" href="`+categories[key][count].url+`">
                                         `+categories[key][count].name+`(`+categories[key][count].posts_count+`)
                                     </a>`);
                     $('.categories').append('<li><a href="'+categories[key][count].url+'">'+categories[key][count].name+'<span>('+categories[key][count].posts_count+')</span></a></li>');
