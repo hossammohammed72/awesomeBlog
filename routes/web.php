@@ -26,7 +26,7 @@ Route::prefix('/')->name('front.')->group(function(){
     Route::get('/post/{post}','Admin\PostController@show')->name('feed.post.show');
 
 
-    Route::get('home', 'Front\HomeController@index')->name('home');
+    Route::get('', 'Front\HomeController@index')->name('home');
     
 });
 Auth::routes();
