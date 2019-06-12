@@ -7,8 +7,6 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-tagsinput.css')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
@@ -33,8 +31,6 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- Datepicker CSS -->
-  <link rel="stylesheet" href="{{asset('assets/css/bootstrap-datetimepicker.min.css')}}" />
   <!-- multi files-->
   <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
   <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
@@ -43,7 +39,9 @@
   <!-- CSS adjustments for browsers with JavaScript disabled -->
   <noscript><link rel="stylesheet" href="{{ asset('plugins/multifiles/css/jquery.fileupload-noscript.css')}}"></noscript>
   <noscript><link rel="stylesheet" href="{{ asset('plugins/multifiles/css/jquery.fileupload-ui-noscript.css')}}"></noscript>
-
+  <!-- input suhggestions -->
+  <link rel="stylesheet" href="{{asset('dist/css/amsify.suggestags.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/magicsuggest-min.css')}}">
 
 </head>
 
@@ -104,7 +102,7 @@
                          with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-sitemap"></i>
+                  <i class=" fa fa-file"></i>
               <p>
                   Posts
                   <i class="right fa fa-angle-left"></i>
@@ -112,19 +110,42 @@
               </a>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                  <a href="" class="nav-link">
+              <a href="{{route('admins.posts.create')}}" class="nav-link">
                   <i class="fa fa-plus-circle nav-icon"></i>
                   <p>Add Post</p>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{route('admins.posts.index')}}" class="nav-link">
                   <i class="fa fa-table nav-icon"></i>
                   <p>View Posts</p>
                   </a>
               </li>
               </ul>
             </li>
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-tags"></i>
+                  <p>
+                    Categories
+                    <i class="right fa fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                <a href="{{route('admins.categories.create')}}" class="nav-link">
+                    <i class="fa fa-plus-circle nav-icon"></i>
+                    <p>Add Category</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admins.categories.index')}}" class="nav-link">
+                    <i class="fa fa-table nav-icon"></i>
+                    <p>View Cateogries</p>
+                    </a>
+                </li>
+                </ul>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -159,8 +180,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap-tagsinput.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap-tagsinput-angular.js') }}"></script>
+
 
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -196,11 +216,9 @@
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!--<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>-->
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js') }}"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<!-- magic suggest -->
+<script type="text/javascript" src="{{asset('dist/js/magicsuggest-min.js')}}"></script>
+
 <!-- toastr notifications -->
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </script>@yield('scripts')
