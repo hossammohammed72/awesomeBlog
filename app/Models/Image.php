@@ -12,6 +12,7 @@ class Image extends Model
     }
 
     public function imageUrl(){
-        return Storage::url($this->url);
+        $string = $this->url;
+        return asset('uploads/'.$string);
     }
 }
