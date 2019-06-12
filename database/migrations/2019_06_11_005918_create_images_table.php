@@ -17,7 +17,6 @@ class CreateImagesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id');
             $table->string('url',60); 
-            $table->string('description',300);
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class CreateTablesRelationships extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->index('user_id');
         });
-        Schema::table('categories_posts', function (Blueprint $table) {
+        Schema::table('category_post', function (Blueprint $table) {
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');;
             $table->index('post_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');;
