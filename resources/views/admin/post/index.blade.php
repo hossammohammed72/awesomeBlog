@@ -20,8 +20,8 @@
         <tbody>
         @foreach($posts as $post)
         <tr>
-            <td class="text-center"> {{$post->title}} </td>
-            <td class="text-center"> {{$post->description}} </td>
+            <td class="text-center"> <a href='{{$post->url()}}'>{{$post->title}} </a> </td>
+            <td class="text-center"> {{$post->content}} </td>
             <td class="text-center">{{$post->categories->count()}}</td>
             <td class="text-center">
                 <a title="Edit" class="btn btn-info" href="{{route('admins.posts.edit',$post->id)}}">
