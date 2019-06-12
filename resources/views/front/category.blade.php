@@ -21,14 +21,15 @@
 <section class="ftco-section">
     <div class="container">
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="row">
                 @foreach($category->posts as $post)
                     <div class="col-md-3 ftco-animate">
                         <div class="blog-entry">
                             <a href="{{$post->url()}}" class="img-2"><img src="{{$post->images()->get()[0]->imageUrl()}}" class="img-fluid" alt="Colorlib Template"></a>
                             <div class="text pt-3">
-                                <p class="meta d-flex"><span class="pr-3">{{$post->content}}</span><span class="ml-auto pl-3">{{$post->formattedDate()}}</span></p>
+                                    <span class="ml-auto pl-3">{{$post->formattedDate()}}</span>
+                                <p class="meta d-flex"><span class="pr-3">{{substr($post->content,100)}}</span></p>
                                 <h3><a href="{{$post->url()}}">{{$post->title}} </a></h3>
                                 <p class="mb-0"><a href="{{$post->url()}}" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
                             </div>

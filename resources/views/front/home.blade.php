@@ -15,7 +15,7 @@
                         <div class="text-2 pb-lg-5 mb-lg-4 px-4 px-md-5">
                             <h3 class="subheading mb-3"></h3>
                             <h1 class="mb-5">{{$post->title}}</h1>
-                        <p class="mb-md-5">{{$post->content}}</p>
+                        <p class="mb-md-5">{{substr($post->content,50)}}</p>
                             <p><a href="{{$post->url}}" class="btn btn-black px-3 px-md-4 py-3">Read More <span class="icon-arrow_forward ml-lg-4"></span></a></p>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                     <div class="overlay"></div>
                                 </a>
                                 <div class="text pt-3">
-                                <p class="meta d-flex"><span class="pr-3">{{$post->content}}</span><span class="ml-auto pl-3">{{$post->formattedDate()}}</span></p>
+                                <p class="meta d-flex"><span class="pr-3">{{substr($post->content,100)}}</span><span class="ml-auto pl-3">{{$post->formattedDate()}}</span></p>
                                     <h3><a href="{{$post->url}}">{{$post->title}}</a></h3>
                                     <p class="mb-0"><a href="{{$post->url}}" class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
                                 </div>
