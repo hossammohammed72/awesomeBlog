@@ -21,8 +21,8 @@ Route::prefix('admins/')->namespace('Admin')->middleware('auth')->name('admins.'
     
 });
 Route::prefix('/')->name('front.')->group(function(){
-    Route::resource('categories','CategoryController');
-    Route::get('/category/{category}','FeedController@categoryPosts')->name('feed.category.posts');
+    
+    Route::get('/category/{category}','Admin\CategoryController@show')->name('feed.category.posts');
     Route::get('/post/{post}','Admin\PostController@show')->name('feed.post.show');
 
 
