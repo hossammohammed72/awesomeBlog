@@ -12,8 +12,10 @@
 */
 
 Route::prefix('admin/')->namespace('Admin')->middleware('auth')->name('admin.')->group(function(){
-
-    Auth::routes();    
+    Route::get('/', function () {
+        return view('layouts/dashboard');
+    });    
+    Auth::routes();
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
