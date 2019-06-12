@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Storage;
 class Image extends Model
 {
     //
@@ -12,6 +12,6 @@ class Image extends Model
     }
 
     public function imageUrl(){
-        return asset('imgs/'.$this->url);
+        return Storage::url($this->url);
     }
 }

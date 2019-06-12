@@ -12,6 +12,10 @@ class Post extends Model
     }
 
     public function images(){
-        return $this->belongsTo('App\Models\Image');
+        return $this->hasMany('App\Models\Image');
+    }
+    public function url(){
+        
+        return route('front.feed.post.show',['post'=>$this->id]);
     }
 }
