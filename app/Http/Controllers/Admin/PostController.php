@@ -49,11 +49,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        
         $validator = Validator::make($request->all(), [
             'title' => 'required|min:3|',
              'content'=>'required|min:3|string',
              'categories'=>'required',
-             'image'=>'image|mimes:jpeg,png,PNG,jpg,JPG,jpge,gif,svg|max:2048'
+             'image'=>'image|mimes:jpeg,png,PNG,jpg,JPG,jpge,gif,svg'
             ]);
         if ($validator->fails())   
            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
@@ -66,7 +67,7 @@ class PostController extends Controller
         $this->attachPostCategories($post,$request->categories);
         if($request->hasFile('photos'))
             $this->savePostImages($post,$request->file('photos'));
-        return response()->json(['success'=>1],200);
+        return response()->json(['success'=>true],200);
     }
     private function savePostImages(Post $post,$images){
         foreach ($images as $imageInput){
